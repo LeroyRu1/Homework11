@@ -1,18 +1,12 @@
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
 
         int year = 1584;
         calculateLeapYear(year);
 
-
-        String device = calculateDevice(1);
-        int deviceYear = 2014;
-        if (deviceYear < 2015) {
-            System.out.println("Установите облегченную версию приложения для " + device + " по ссылке");
-        } else {
-            System.out.println("Установите версию приложения для " + device + " по ссылке");
-        }
-
+        getDevice(1, 2024);
 
         int days = calculateDays(20);
         if (days != 0) {
@@ -32,13 +26,17 @@ public class Main {
 
     }
 
-    public static String calculateDevice(int device) {
-        if (device == 0) {
-            return "IOS";
+    public static void getDevice (int device, int year) {
+        int currentYear = LocalDate.now().getYear();
+        if (device == 0 && year < currentYear) {
+            System.out.println("Установите облегченную версию приложения для IOS по ссылке");
+        } else if (device == 0 && year >= currentYear) {
+            System.out.println("Установите версию приложения для IOS по ссылке");
+        } else if (device == 1 && year < currentYear) {
+            System.out.println("Установите облегченную версию приложения для Android по ссылке");
         } else {
-            return "Android";
+            System.out.println("Установите версию приложения для Android по ссылке");
         }
-
     }
 
 
